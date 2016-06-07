@@ -1,0 +1,78 @@
+﻿<Window x:Class="CompositeCollection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="clr-namespace:CompositeCollection.Behaviors"
+        xmlns:checkCompositeCollection="clr-namespace:CompositeCollection"
+        Title="MainWindow"
+        Width="525"
+        Height="350"
+        d:DataContext="{d:DesignInstance d:Type={x:Type checkCompositeCollection:MainWindowViewModel}}"
+        mc:Ignorable="d">
+
+    <Window.Resources>
+
+        <CollectionViewSource x:Key="CollectionViewSourceA"
+                              Source="{Binding Path=SourceA}" />
+
+        <CollectionViewSource x:Key="CollectionViewSourceB"
+                              Source="{Binding Path=SourceB}" />
+
+        <CompositeCollection x:Key="PersonCompositeCollection">
+            <CollectionContainer Collection="{Binding Source={StaticResource CollectionViewSourceA}}" />
+            <CollectionContainer Collection="{Binding Source={StaticResource CollectionViewSourceB}}" />
+        </CompositeCollection>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="37*" />
+            <RowDefinition Height="55*" />
+        </Grid.RowDefinitions>
+
+        <Button Content="Add Person">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction MethodName="AddItemToSourceA"
+                                         TargetObject="{Binding}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Button Grid.Row="1"
+                Content="Add Virtual Person">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <ei:CallMethodAction MethodName="AddItemToSourceB"
+                                         TargetObject="{Binding}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+        <DataGrid Grid.Row="2"
+                  Grid.RowSpan="2"
+                  CanUserSortColumns="True"
+                  ItemsSource="{Binding Source={StaticResource PersonCompositeCollection}}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Name}"
+                                    Header="Name" />
+                <DataGridTextColumn Binding="{Binding Path=FamilyName}"
+                                    Header="FamilyName" />
+            </DataGrid.Columns>
+
+            <i:Interaction.Behaviors>
+                <behaviors:DataGridCompositeCollectionCustomSortBehavior />
+            </i:Interaction.Behaviors>
+
+        </DataGrid>
+    </Grid>
+
+</Window>
+
+
+
