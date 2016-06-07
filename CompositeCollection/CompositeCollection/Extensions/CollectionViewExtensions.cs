@@ -9,12 +9,12 @@ namespace CompositeCollection.Extensions
         {
             if (collectionView == null)
             {
-                throw new ArgumentNullException("collectionView");
+                throw new ArgumentNullException(nameof(collectionView));
             }
 
             if (sortDescription == null)
             {
-                throw new ArgumentNullException("sortDescription");
+                throw new ArgumentNullException(nameof(sortDescription));
             }
 
             collectionView.SortDescriptions.Clear();

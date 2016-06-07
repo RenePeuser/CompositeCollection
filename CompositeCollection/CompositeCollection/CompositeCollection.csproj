@@ -59,8 +59,8 @@
     <Compile Include="Base\BindingBase.cs" />
     <Compile Include="Extensions\CollectionViewExtensions.cs" />
     <Compile Include="Extensions\CompositeCollectionExtensions.cs" />
-    <Compile Include="Converter\ConvertToICollectionView.cs" />
     <Compile Include="Behaviors\DataGridCompositeCollectionCustomSortBehavior.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

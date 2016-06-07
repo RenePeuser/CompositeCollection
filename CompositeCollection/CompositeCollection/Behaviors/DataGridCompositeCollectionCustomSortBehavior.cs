@@ -15,7 +15,7 @@ namespace CompositeCollection.Behaviors
 
         private void AssociatedObjectSorting(object sender, DataGridSortingEventArgs e)
         {
-            var compositeCollection = AssociatedObject.ItemsSource as System.Windows.Data.CompositeCollection;
+            var compositeCollection = AssociatedObject.ItemsSource.As<System.Windows.Data.CompositeCollection>();
             if (compositeCollection == null)
             {
                 return;
