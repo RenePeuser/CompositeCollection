@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Extensions">
+      <HintPath>..\ExternalLibs\Extensions\Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -51,16 +54,16 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfExtensions">
+      <HintPath>..\ExternalLibs\WpfExtensions\WpfExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\BindingBase.cs" />
-    <Compile Include="Extensions\CollectionViewExtensions.cs" />
-    <Compile Include="Extensions\CompositeCollectionExtensions.cs" />
     <Compile Include="Behaviors\DataGridCompositeCollectionCustomSortBehavior.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

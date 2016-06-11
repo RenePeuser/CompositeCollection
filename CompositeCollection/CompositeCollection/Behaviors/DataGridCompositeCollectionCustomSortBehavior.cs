@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Interactivity;
-using CompositeCollection.Extensions;
+using Extensions;
+using WpfExtensions;
 
 namespace CompositeCollection.Behaviors
 {
